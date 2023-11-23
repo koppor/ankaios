@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - test_system_tests_with_fixed_cache
   workflow_dispatch:
   workflow_call:
 
