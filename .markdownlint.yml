@@ -1,0 +1,9 @@
+default: true
+
+MD013: false
+
+MD033:
+  allowed_elements: ['nobr', 'picture', 'source', 'img']
+
+# because of syntax for "!!! Note"
+MD046: false
