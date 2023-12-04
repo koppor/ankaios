@@ -10,7 +10,7 @@ on:
 env:
   CARGO_TERM_COLOR: always
 
-jobs:      
+jobs:
   test_and_build_linux_amd64:
     name: Test and build Linux amd64
     runs-on: ubuntu-latest
@@ -54,7 +54,7 @@ jobs:
         with:
           name: ankaios-linux-amd64-bin
           path: dist/
-          
+
       - name: Build linux-amd64 debian package
         run: |
           cargo deb -p ank --target x86_64-unknown-linux-musl
@@ -76,7 +76,7 @@ jobs:
       options: --user root
     steps:
       - uses: actions/checkout@v3.5.3
-      
+
       - name: Build linux-arm64 release-mode
         run: |
           cargo build --target aarch64-unknown-linux-musl --release
@@ -110,3 +110,14 @@ jobs:
         with:
           name: requirement-tracing-report
           path: dist/
+
+  find_merge_conflicts:
+    # This ensures that no git merge conflict markers (<<<, ...) are contained
+    name: Find merge conflicts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          show-progress: 'false'
+      - name: Merge Conflict Finder
+        uses: olivernybroe/action-conflict-finder@v4.0
